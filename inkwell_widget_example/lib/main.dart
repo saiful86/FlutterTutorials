@@ -16,11 +16,9 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: (){
         print('on Tap');
-        var snackBar = SnackBar(content: Text('On Tap'));
-        ScaffoldMessenger.of(context).showSnackBar(snackBar);
       },
       child: Container(
         height: 50,
@@ -31,5 +29,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
 
