@@ -17,6 +17,7 @@ abstract class ApiService {
       receiveTimeout: 30000,
       connectTimeout: 30000,
       contentType: 'application/json',
+	  /* If need headers */
       headers: {
         'Authorization': 'Basic ZGlzYXBpdXNlcjpkaXMjMTIz',
         'X-ApiKey': 'ZGslzIzEyMw==',
