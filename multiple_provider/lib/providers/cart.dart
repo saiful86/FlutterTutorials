@@ -17,6 +17,7 @@ class Cart with ChangeNotifier {
     return {..._items};
   }
 
+
   int get itemCount {
     return _items.length;
   }
@@ -51,7 +52,12 @@ class Cart with ChangeNotifier {
     }
 
     notifyListeners();
-
   }
+
+  removeItem(String itemId){
+    _items.remove(itemId);
+    notifyListeners();
+  }
+
 
 }

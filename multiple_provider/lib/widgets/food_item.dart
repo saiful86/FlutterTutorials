@@ -58,6 +58,15 @@ class FoodItem extends StatelessWidget {
               ),
               onPressed: () {
                 cart.addItem(food.id, food.price, food.title);
+
+                ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('Added item to cart',textAlign: TextAlign.center,),
+                      duration: Duration(seconds: 4),
+                      action: SnackBarAction(label: 'UNDO',onPressed: (){cart.removeItem(food.id);},),
+                    )
+                );
+
               },
               color: Theme.of(context).accentColor,
             ),
