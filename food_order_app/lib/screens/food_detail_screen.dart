@@ -8,7 +8,6 @@ class FoodDetailScreen extends StatelessWidget {
 
   FoodDetailScreen();
 
-
   @override
   Widget build(BuildContext context) {
 
