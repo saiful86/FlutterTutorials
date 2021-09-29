@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_order_app/providers/cart.dart';
+import 'package:food_order_app/screens/add_item.dart';
 import 'package:food_order_app/screens/cart_screen.dart';
 import 'package:provider/provider.dart';
 import './screens/foods_overview_screen.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
         routes: {
           FoodDetailScreen.routeName: (ctx) => FoodDetailScreen(),
           CartScreen.routeName: (ctx) => CartScreen(),
+          AddItem.routeName: (ctx) => AddItem()
         }
         ),
     );

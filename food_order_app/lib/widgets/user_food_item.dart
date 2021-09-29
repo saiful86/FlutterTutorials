@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 class UserFoodItem extends StatelessWidget {
+
+  final String itemId;
   final String title;
   final String imageUrl;
 
-  UserFoodItem(this.title, this.imageUrl);
+  UserFoodItem({this.itemId,this.title, this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
