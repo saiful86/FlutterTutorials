@@ -33,11 +33,7 @@ class FoodListScreen extends StatelessWidget {
           itemCount: foodsData.items.length,
           itemBuilder: (_, i) => Column(
             children: [
-              UserFoodItem(
-                itemId: foodsData.items[i].id,
-                title: foodsData.items[i].title,
-                imageUrl:  foodsData.items[i].imageUrl,
-              ),
+              UserFoodItem(foodsData.items[i]),
               Divider(),
             ],
           ),

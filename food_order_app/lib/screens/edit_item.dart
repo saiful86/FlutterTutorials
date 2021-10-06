@@ -3,19 +3,21 @@ import 'package:food_order_app/providers/food.dart';
 import 'package:food_order_app/providers/foods.dart';
 import 'package:provider/provider.dart';
 
-class AddItem extends StatefulWidget {
+class EditItem extends StatefulWidget {
 
-  static const routeName = '/addItem';
+  static const routeName = '/editItem';
 
   @override
-  _AddItemState createState() => _AddItemState();
+  _EditItemState createState() => _EditItemState();
 
 }
 
-class _AddItemState extends State<AddItem> {
+class _EditItemState extends State<EditItem> {
 
   String xyz;
   Foods foodList;
+
+  Food food;
 
   final _keyForm = GlobalKey<FormState>();
 
@@ -24,26 +26,29 @@ class _AddItemState extends State<AddItem> {
   final itemPriceController = TextEditingController();
   final itemUrlController = TextEditingController();
 
-  void saveItemToList(){
+  void updateItemToList(){
 
-    print('saveItemToList ${itemNameController.text}');
+   // print('saveItemToList ${itemNameController.text}');
 
     if(_keyForm.currentState.validate()){
-      Food food =  Food(
+
+      /*Food food =  Food(
         title: itemNameController.text,
         description: itemDescriptionController.text,
         price: double.parse(itemPriceController.text),
         imageUrl:itemUrlController.text,
-      );
+      );*/
 
-      foodList.addFood(food);
+      food.title = itemNameController.text;
+      food.description = itemDescriptionController.text;
+      food.price = double.parse(itemPriceController.text);
+      food.imageUrl = itemUrlController.text;
 
-      itemNameController.text = '';
-      itemDescriptionController.text = '';
-      itemPriceController.text = '';
-      itemUrlController.text = '';
 
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Successfully Saved Item')));
+      foodList.updateFood(food);
+
+
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Successfully Updated Item')));
 
     }
     /**/
@@ -54,8 +59,15 @@ class _AddItemState extends State<AddItem> {
 
     foodList = Provider.of<Foods>(context);
 
+    food = ModalRoute.of(context).settings.arguments as Food;
+
+    itemNameController.text = food.title;
+    itemDescriptionController.text = food.description;
+    itemPriceController.text = food.price.toString();
+    itemUrlController.text = food.imageUrl;
+
     return Scaffold(
-      appBar: AppBar(title: Text('Add Item'),),
+      appBar: AppBar(title: Text('Edit Item'),),
       body: Padding(
         padding: const EdgeInsets.only(left: 16.0,right: 16.0,top: 10,bottom: 10),
         child: Form(
@@ -163,8 +175,8 @@ class _AddItemState extends State<AddItem> {
               ),
               SizedBox(height: 10,),
               ElevatedButton(
-                  onPressed: (){saveItemToList();},
-                  child: Text('Save'))
+                  onPressed: (){updateItemToList();},
+                  child: Text('Update'))
             ],
           ),
         ),

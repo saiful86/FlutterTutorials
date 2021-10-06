@@ -54,10 +54,14 @@ class Foods extends ChangeNotifier{
     notifyListeners();
   }
 
-  void update(Food value) {
-   /* var foodItem = _items.firstWhere((prod) => prod.id == value.id);
-    foodItem.title = value*/
+  void updateFood(Food value){
+
+    _items [_items.indexWhere((element) => element.id == value.id )] = value;
+
     notifyListeners();
+
   }
+
+
 
 }
