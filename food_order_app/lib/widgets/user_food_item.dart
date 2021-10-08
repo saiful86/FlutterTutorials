@@ -20,8 +20,18 @@ class UserFoodItem extends StatelessWidget {
   UserFoodItem(this.food, );
 
 
+
   @override
   Widget build(BuildContext context) {
+
+    void removeAFood(){
+
+     var foodList = Provider.of<Foods>(context, listen: false);
+     foodList.removeAFoodItem(food.id);
+
+      print('removeAFood');
+    }
+
     return ListTile(
       title: Text(food.title),
       leading: CircleAvatar(
@@ -40,7 +50,9 @@ class UserFoodItem extends StatelessWidget {
             ),
             IconButton(
               icon: Icon(Icons.delete),
-              onPressed: () {},
+              onPressed: () {
+                removeAFood();
+              },
               color: Theme.of(context).errorColor,
             ),
           ],

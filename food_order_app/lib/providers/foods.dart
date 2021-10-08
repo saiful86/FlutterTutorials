@@ -55,11 +55,14 @@ class Foods extends ChangeNotifier{
   }
 
   void updateFood(Food value){
-
     _items [_items.indexWhere((element) => element.id == value.id )] = value;
-
     notifyListeners();
+  }
 
+  void removeAFoodItem(String id){
+
+    _items.removeAt(_items.indexWhere((element) => element.id == id));
+    notifyListeners();
   }
 
 
